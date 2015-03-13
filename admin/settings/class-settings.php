@@ -7,9 +7,9 @@
 * @since      1.0.0
 */
 
-if ( ! class_exists( 'Birds_Settings' ) ) {
+if ( ! class_exists( 'Birds_Settings_Bcl' ) ) {
 
-    class Birds_Settings {
+    class Birds_Settings_Bcl {
 
         private $page,
         $title,
@@ -183,7 +183,7 @@ if ( ! class_exists( 'Birds_Settings' ) ) {
                 add_settings_section( $setting, $section['title'], array( $this, 'do_section' ), $this->page );
                 if ( ! empty( $section['fields'] ) ) {
                     $this->empty = false;
-                    $values = get_setting( $setting );
+                    $values = get_setting_bcl( $setting );
                     foreach ( $section['fields'] as $name => $field ) {
                         $id = $setting . '_' . $name;
                         $field = array_merge( array(
@@ -392,17 +392,17 @@ if ( ! class_exists( 'Birds_Settings' ) ) {
             }
         }
     }
-    add_action( 'activated_plugin', array( 'Birds_Settings', 'plugin_priority' ) );
+    add_action( 'activated_plugin', array( 'Birds_Settings_Bcl', 'plugin_priority' ) );
 
-    function get_setting( $setting, $option = false )
+    function get_setting_bcl( $setting, $option = false )
     {
         $setting = get_option( $setting );
         if ( is_array( $setting ) ) {
             if ( $option ) {
-                return isset( $setting[$option] ) ? Birds_Settings::parse_multi( $setting[$option] ) : false;
+                return isset( $setting[$option] ) ? Birds_Settings_Bcl::parse_multi( $setting[$option] ) : false;
             }
             foreach ( $setting as $k => $v ) {
-                $setting[$k] = Birds_Settings::parse_multi( $v );
+                $setting[$k] = Birds_Settings_Bcl::parse_multi( $v );
             }
             return $setting;
         }
@@ -411,7 +411,7 @@ if ( ! class_exists( 'Birds_Settings' ) ) {
 
     function create_settings_page( $page = 'custom_settings', $title = null, $menu = array(), $settings = array(), $args = array() )
     {
-        return new Birds_Settings( $page, $title, $menu, $settings, $args );
+        return new Birds_Settings_Bcl( $page, $title, $menu, $settings, $args );
     }
 
 }

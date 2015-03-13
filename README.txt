@@ -2,7 +2,7 @@
 
 Contributors: fredserva
 
-Tags: admin, brand login, branded login, custom login, custom login color, custom login logo, log in, login, login page, logo, style log in, style login, themes
+Tags: admin, brand login, branded login, custom login, custom login color, custom login logo, french, log in, login, login page, logo, style log in, style login, themes
 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JDCQYELVWT6T6
 
@@ -10,7 +10,7 @@ Requires at least: 4.0
 
 Tested up to: 4.1
 
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 License: GNU General Public License v2.0
 
@@ -86,6 +86,10 @@ Less than or equal to 320px width and 200px height is the recommended logo size 
 8. Demo Login Page #3
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Some minor improvements
 
 = 1.0.1 =
 

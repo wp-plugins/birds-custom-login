@@ -8,8 +8,8 @@
 */
 
 $text_domain = 'birds-custom-login';
-$logo = plugins_url() . '/birds-custom-login/admin/images/w-logo-blue.png' ;
-$icon = plugins_url() . '/birds-custom-login/admin/images/birds.png' ;
+$logo = plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'admin/images/w-logo-blue.png';
+$icon = plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'admin/images/birds.png';
 $blog_name = get_bloginfo('name');
 $blog_url = get_bloginfo('url');
 

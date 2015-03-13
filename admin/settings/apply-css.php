@@ -96,7 +96,7 @@ add_action('admin_head', 'birds_apply_preview_css');
 function birds_apply_preview_css() {
 
     // Logo & Background
-    $logo_id = get_setting('bcl_elements_section', 'bcl_logo_upload');
+    $logo_id = get_setting_bcl('bcl_elements_section', 'bcl_logo_upload');
     if ($logo_id != '') {
         $logo_attributes = wp_get_attachment_image_src($logo_id, 'full');
         $logo = $logo_attributes[0] ;
@@ -107,58 +107,58 @@ function birds_apply_preview_css() {
         $logo_width = '84' ;
         $logo_height = '84' ;
     }
-    $bcl_logo_bottom_margin = get_setting( 'bcl_elements_section', 'bcl_logo_bottom_margin' );
-    $bcl_bg_color = get_setting( 'bcl_elements_section', 'bcl_bg_color' );
+    $bcl_logo_bottom_margin = get_setting_bcl( 'bcl_elements_section', 'bcl_logo_bottom_margin' );
+    $bcl_bg_color = get_setting_bcl( 'bcl_elements_section', 'bcl_bg_color' );
 
     // Form
-    $bcl_label_color = get_setting( 'bcl_form_section', 'bcl_label_color' );
-    $bcl_form_bg_color = get_setting( 'bcl_form_section', 'bcl_form_bg_color' );
-    $bcl_form_style = get_setting( 'bcl_form_section', 'bcl_form_style' );
+    $bcl_label_color = get_setting_bcl( 'bcl_form_section', 'bcl_label_color' );
+    $bcl_form_bg_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_bg_color' );
+    $bcl_form_style = get_setting_bcl( 'bcl_form_section', 'bcl_form_style' );
     if ($bcl_form_style == 'flat') {
         $bcl_form_style_shadow = 'none';
     }
     if ($bcl_form_style == 'shadow') {
         $bcl_form_style_shadow = '0 1px 3px rgba(0,0,0,.13)';
     }
-    $bcl_form_button_color = get_setting( 'bcl_form_section', 'bcl_form_button_color' );
+    $bcl_form_button_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_button_color' );
     $rgba_06 = hex2rgba($bcl_form_button_color, 0.6);
     $darkPercent = -13;
     $lightPercent = 90;
     $darker = colourCreator($bcl_form_button_color, $darkPercent);
     $lighter = colourCreator($bcl_form_button_color, $lightPercent);
     $rgba_015 = hex2rgba($lighter, 0.15);
-    $bcl_rounded_form = get_setting( 'bcl_form_section', 'bcl_rounded_form' );
-    $bcl_rounded_nb = get_setting( 'bcl_form_section', 'bcl_rounded_nb' );
+    $bcl_rounded_form = get_setting_bcl( 'bcl_form_section', 'bcl_rounded_form' );
+    $bcl_rounded_nb = get_setting_bcl( 'bcl_form_section', 'bcl_rounded_nb' );
     if ($bcl_rounded_form == 'yes') {
         $letsroundit = '-webkit-border-radius: '.$bcl_rounded_nb.'px;-moz-border-radius: '.$bcl_rounded_nb.'px;border-radius: '.$bcl_rounded_nb.'px;';
     }
     if ($bcl_rounded_form == 'no') {
         $letsroundit = '';
     }
-    $bcl_form_text_button_color = get_setting( 'bcl_form_section', 'bcl_form_button_text_color' );
+    $bcl_form_text_button_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_button_text_color' );
 
     // Below Form
-    $bcl_reg = get_setting( 'bcl_below_form_section', 'bcl_reg' );
+    $bcl_reg = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg' );
     if ($bcl_reg == 'yes') {
         $none = 'display: none';
     }
     if ($bcl_reg == 'no') {
         $none = '';
     }
-    $bcl_backto = get_setting( 'bcl_below_form_section', 'bcl_backto' );
+    $bcl_backto = get_setting_bcl( 'bcl_below_form_section', 'bcl_backto' );
     if ($bcl_backto == 'yes') {
         $none2 = 'display: none';
     }
     if ($bcl_backto == 'no') {
         $none2 = '';
     }
-    $bcl_reg_color = get_setting( 'bcl_below_form_section', 'bcl_reg_color' );
-    $bcl_reg_hover_color = get_setting( 'bcl_below_form_section', 'bcl_reg_hover_color' );
-    $bcl_back_color = get_setting( 'bcl_below_form_section', 'bcl_back_color' );
-    $bcl_back_hover_color = get_setting( 'bcl_below_form_section', 'bcl_back_hover_color' );
+    $bcl_reg_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg_color' );
+    $bcl_reg_hover_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg_hover_color' );
+    $bcl_back_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_back_color' );
+    $bcl_back_hover_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_back_hover_color' );
 
     // Fullscreen Background
-    $bcl_fullscreen_bg = get_setting('bcl_elements_section', 'bcl_fullscreen_bg');
+    $bcl_fullscreen_bg = get_setting_bcl('bcl_elements_section', 'bcl_fullscreen_bg');
     if ($bcl_fullscreen_bg != '') {
         $full_attributes = wp_get_attachment_image_src($bcl_fullscreen_bg, 'full');
         $full = $full_attributes[0] ;
@@ -176,7 +176,7 @@ function birds_apply_preview_css() {
     echo '<style>
         #pre_bg {
             background: '.$bcl_bg_color.';
-            height: 600px;
+            height: auto;
             border: 1px solid #ddd;
             color: #444;
             font-family: "Open Sans",sans-serif;
@@ -332,69 +332,69 @@ add_action( 'login_enqueue_scripts', 'birds_custom_login_css' );
 function birds_custom_login_css() {
 
     // Logo & Background
-    $logo_id = get_setting('bcl_elements_section', 'bcl_logo_upload');
+    $logo_id = get_setting_bcl('bcl_elements_section', 'bcl_logo_upload');
     if ($logo_id != '') {
         $logo_attributes = wp_get_attachment_image_src($logo_id, 'full');
         $logo = $logo_attributes[0] ;
         $logo_width = $logo_attributes[1] ;
         $logo_height = $logo_attributes[2] ;
     } else {
-        $logo = plugins_url() . '/birds-custom-login/admin/images/w-logo-blue.png' ;
+        $logo = plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'admin/images/w-logo-blue.png' ;
         $logo_width = '84' ;
         $logo_height = '84' ;
     }
-    $bcl_logo_bottom_margin = get_setting( 'bcl_elements_section', 'bcl_logo_bottom_margin' );
-    $bcl_bg_color = get_setting( 'bcl_elements_section', 'bcl_bg_color' );
+    $bcl_logo_bottom_margin = get_setting_bcl( 'bcl_elements_section', 'bcl_logo_bottom_margin' );
+    $bcl_bg_color = get_setting_bcl( 'bcl_elements_section', 'bcl_bg_color' );
 
     // Form
-    $bcl_label_color = get_setting( 'bcl_form_section', 'bcl_label_color' );
-    $bcl_form_bg_color = get_setting( 'bcl_form_section', 'bcl_form_bg_color' );
-    $bcl_form_style = get_setting( 'bcl_form_section', 'bcl_form_style' );
+    $bcl_label_color = get_setting_bcl( 'bcl_form_section', 'bcl_label_color' );
+    $bcl_form_bg_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_bg_color' );
+    $bcl_form_style = get_setting_bcl( 'bcl_form_section', 'bcl_form_style' );
     if ($bcl_form_style == 'flat') {
         $bcl_form_style_shadow = 'none';
     }
     if ($bcl_form_style == 'shadow') {
         $bcl_form_style_shadow = '0 1px 3px rgba(0,0,0,.13)';
     }
-    $bcl_form_button_color = get_setting( 'bcl_form_section', 'bcl_form_button_color' );
+    $bcl_form_button_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_button_color' );
     $rgba_06 = hex2rgba($bcl_form_button_color, 0.6);
     $darkPercent = -13;
     $lightPercent = 90;
     $darker = colourCreator($bcl_form_button_color, $darkPercent);
     $lighter = colourCreator($bcl_form_button_color, $lightPercent);
     $rgba_015 = hex2rgba($lighter, 0.15);
-    $bcl_rounded_form = get_setting( 'bcl_form_section', 'bcl_rounded_form' );
-    $bcl_rounded_nb = get_setting( 'bcl_form_section', 'bcl_rounded_nb' );
+    $bcl_rounded_form = get_setting_bcl( 'bcl_form_section', 'bcl_rounded_form' );
+    $bcl_rounded_nb = get_setting_bcl( 'bcl_form_section', 'bcl_rounded_nb' );
     if ($bcl_rounded_form == 'yes') {
         $letsroundit = '-webkit-border-radius: '.$bcl_rounded_nb.'px;-moz-border-radius: '.$bcl_rounded_nb.'px;border-radius: '.$bcl_rounded_nb.'px;';
     }
     if ($bcl_rounded_form == 'no') {
         $letsroundit = '';
     }
-    $bcl_form_text_button_color = get_setting( 'bcl_form_section', 'bcl_form_button_text_color' );
+    $bcl_form_text_button_color = get_setting_bcl( 'bcl_form_section', 'bcl_form_button_text_color' );
 
     // Below Form
-    $bcl_reg = get_setting( 'bcl_below_form_section', 'bcl_reg' );
+    $bcl_reg = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg' );
     if ($bcl_reg == 'yes') {
         $none = 'display: none';
     }
     if ($bcl_reg == 'no') {
         $none = '';
     }
-    $bcl_backto = get_setting( 'bcl_below_form_section', 'bcl_backto' );
+    $bcl_backto = get_setting_bcl( 'bcl_below_form_section', 'bcl_backto' );
     if ($bcl_backto == 'yes') {
         $none2 = 'display: none';
     }
     if ($bcl_backto == 'no') {
         $none2 = '';
     }
-    $bcl_reg_color = get_setting( 'bcl_below_form_section', 'bcl_reg_color' );
-    $bcl_reg_hover_color = get_setting( 'bcl_below_form_section', 'bcl_reg_hover_color' );
-    $bcl_back_color = get_setting( 'bcl_below_form_section', 'bcl_back_color' );
-    $bcl_back_hover_color = get_setting( 'bcl_below_form_section', 'bcl_back_hover_color' );
+    $bcl_reg_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg_color' );
+    $bcl_reg_hover_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_reg_hover_color' );
+    $bcl_back_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_back_color' );
+    $bcl_back_hover_color = get_setting_bcl( 'bcl_below_form_section', 'bcl_back_hover_color' );
 
     // Fullscreen Background
-    $bcl_fullscreen_bg = get_setting('bcl_elements_section', 'bcl_fullscreen_bg');
+    $bcl_fullscreen_bg = get_setting_bcl('bcl_elements_section', 'bcl_fullscreen_bg');
     if ($bcl_fullscreen_bg != '') {
         $full_attributes = wp_get_attachment_image_src($bcl_fullscreen_bg, 'full');
         $full = $full_attributes[0] ;
@@ -422,9 +422,7 @@ function birds_custom_login_css() {
 
                 </style>';
     }
-
     echo '
-
         <style type="text/css">
          body {
                 background: '.$bcl_bg_color.' !important;
